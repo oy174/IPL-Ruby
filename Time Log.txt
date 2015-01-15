@@ -1,2 +1,2 @@
-2015-01-14 20:00 - 
+2015-01-14 20:00 - 21:00
 	Initial set up of GitHub and IDE. Started on Ruby foundations.
