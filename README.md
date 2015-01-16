@@ -11,15 +11,15 @@ My project is worth doing because just like films, it will have benefits for oth
 
 ##Deliverables
 
-* Skeleton: 	Movable Ship – 2 hours
-		Firing Ship – 1 hour
+* Skeleton: 	Movable Ship – 2 hours <br/>
+		Firing Ship – 1 hour <br/>
 		Floating Objects – 1 hour
 
-* Basic:	Collision Detection – 5 hours
+* Basic:	Collision Detection – 5 hours 
 			
 * Solid:	Single Enemy A.I. – 4 hours
 		
-* Awesome:	Different Enemy A.I. – 2 hours
+* Awesome:	Different Enemy A.I. – 2 hours <br/>
 		Level Set, Continues Play – 4 hours
 
 ##Tools
