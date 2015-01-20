@@ -1,2 +1,6 @@
 2015-01-14 20:00 - 21:00
 	Initial set up of GitHub and IDE. Started on Ruby foundations.
+	
+2015-01-19 19:09 - 22:25
+	Continued Beginning Ruby. Started with Gosu. Set up window, loaded an images for ship and background. Got basic movements (limited to up and down). Started with making Floating objects but ran into problems.
+	
