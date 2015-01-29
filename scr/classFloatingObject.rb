@@ -2,21 +2,21 @@ module ZOrder
   Background, FloatingObjects, Player, UI = *0..3
 end
 
-class FloatingObject
-	attr_reader :x, :y
-	
-	def initialize(animation)
-		@animation = animation
-		@color = Gosu::Color.new(oxff000000)
-		@color.red  = rand(256 - 40) + 40
-		@color.green  = rand(256 - 40) + 40
-		@color.blue  = rand(256 - 40) + 40
-		@x = rand * 800
-		@y = rand * 600
+class FloatingObject	
+	def initialize(window)
+		@image = Gosu::Image(window, "../img/Ship.png", false)
+		@x = @y = @angle = rand(640), rand(240), rand(360)
+		@speed_modifier = 2
 	end
 	
 	def draw
-		img = @animation[Gosu::milliseconds / 100 % @animation.size];
-		img.draw(@x - img.width / 2.0, @y - img.height / 2.0, ZOrder::FloatingObjects, 1, 1, @color, :add)
+		image.draw_rot(@x, @y, 1, @angle)
+	end
+	
+	def move
+		@x += @speed_modifier*Math.sin(Math::PI/180*@angle)
+		@y += -@speed_modifier*Math.cos(Math::PI/180*@angle)
+		@x %= 1920
+		@y %= 1080
 	end
 end

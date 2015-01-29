@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'gosu'
+##require 'Math'
 require 'classPlayer.rb'
 require 'classFloatingObject.rb'
 
@@ -10,37 +11,38 @@ The @player connects the player class to the window
 =end
 class GameWindow < Gosu::Window
 	def initialize
-		super 800, 600, false
+		super(1920, 1080, false)
 		self.caption = "Tera's Termination"
 		
 		@background_image = Gosu::Image.new(self, "../img/Darkness.png", true)
 		
 		@player = Player.new(self)
-		@player.warp(320, 240)
+		@player.warp(150, 240)
 		
-		@FloatingObject_anim = Gosu::Image::load_tiles(self, "../img/FloatingObject.png", 25, 25, false)
-		@FloatingObjects = Array.new
+		##@floatingObjects = [FloatingObject.new(self)]
 	end
 	
 	def update
-		## LEFT AND RIGHT NOT WORKING
-		if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then @player.accelerate_Left
+		if button_down? Gosu::KbLeft then @player.accelerate_Left
 		end
-		if button_down? Gosu::KbRight or button_down? Gosu::GpRight then @player.accelerate_Right
+		if button_down? Gosu::KbRight then @player.accelerate_Right
 		end
-		if button_down? Gosu::KbUp or button_down? Gosu::GpButton0 then @player.accelerate_Up
+		if button_down? Gosu::KbUp then @player.accelerate_Up
 		end
-		if button_down? Gosu::KbDown or button_down? Gosu::GpButton1 then @player.accelerate_Down
+		if button_down? Gosu::KbDown then @player.accelerate_Down
+		end
+		## crashes game
+		if button_down? Gosu::KbZ then @player.fire
 		end
 		
 		@player.move
+		##@floatingObjects.each {|floatingObject| floatingObject.move}
 	end
 	
 	def draw
 		@background_image.draw(0, 0, ZOrder::Background)
 		@player.draw
-		##PROBLEM WITH FLOATINGOBJECTS ARRAY
-		##@FloatingObjects.each { |FloatingObjects| FloatingObject.draw }
+		##@floatingObjects.each {|floatingObject| floatingObject.draw}
 	end
 	
 	def button_down(id)

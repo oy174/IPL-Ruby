@@ -1,0 +1,23 @@
+require 'math'
+
+module ZOrder
+  Background, FloatingObjects, Player, UI = *0..3
+end
+
+class FloatingObject	
+	def initialize(window)
+		@image = Gosu::Image(
+		@color = Gosu::Color.new(0xff000000)
+		@color.red  = rand(256 - 40) + 40
+		@color.green  = rand(256 - 40) + 40
+		@color.blue  = rand(256 - 40) + 40
+	end
+	
+	def draw
+		image.draw_rot(@x, @y, 1, @angle)
+	end
+	
+	def move
+		@x += @speed_modifer*Math.sin(Math::PI/180*@angle)
+		@y += -@speed_modifer*Math.cos(Math::PI/180*@angle)
+end

@@ -7,3 +7,45 @@ Command-line arguments:  -os win32 -ws win32 -arch x86
 
 !ENTRY com.aptana.git.core 4 0 2015-01-19 20:28:31.652
 !MESSAGE (Build 3.6.1.201410201044) [ERROR]  Errors occurred while grabbing changed file listings
+!SESSION 2015-01-29 09:44:39.785 -----------------------------------------------
+eclipse.buildId=3.6.1.201410201044
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY com.aptana.ruby.core 4 0 2015-01-29 09:45:18.449
+!MESSAGE Cannot run program "ruby": CreateProcess error=2, The system cannot find the file specified
+
+!ENTRY com.aptana.ruby.debug 4 0 2015-01-29 10:07:31.472
+!MESSAGE Unable to find a Ruby executable.
+
+!ENTRY com.aptana.ruby.debug 4 0 2015-01-29 10:07:49.165
+!MESSAGE Unable to find a Ruby executable.
+
+!ENTRY com.aptana.ruby.debug 4 0 2015-01-29 10:09:48.616
+!MESSAGE Unable to find a Ruby executable.
+!SESSION 2015-01-29 10:11:23.297 -----------------------------------------------
+eclipse.buildId=3.6.1.201410201044
+java.version=1.8.0_31
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY com.aptana.ruby.debug 4 0 2015-01-29 10:11:34.615
+!MESSAGE Unable to find a Ruby executable.
+
+!ENTRY com.aptana.ruby.core 4 0 2015-01-29 10:11:34.628
+!MESSAGE Cannot run program "ruby": CreateProcess error=2, The system cannot find the file specified
+
+!ENTRY com.aptana.ruby.debug 4 0 2015-01-29 10:22:50.163
+!MESSAGE Unable to find a Ruby executable.
+!SESSION 2015-01-29 10:23:02.263 -----------------------------------------------
+eclipse.buildId=3.6.1.201410201044
+java.version=1.8.0_31
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY com.aptana.ruby.debug 4 0 2015-01-29 10:24:08.773
+!MESSAGE Unable to find 'rdebug-ide' binary script. May need to install 'ruby-debug-ide' gem, or may need to add your gem executable directory to your PATH (check location via 'gem environment').
