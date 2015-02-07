@@ -7,3 +7,6 @@
 2015-01-29 10:00 - 12:00
 	Fixed limited movability. Restarted Floating object unfinished. Started ship being able to fire.
 	
+2015-02-06 16:52 - 18:00
+	Finished creating and getting Floating object moving.
+	
