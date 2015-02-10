@@ -1,6 +1,7 @@
 ## Character creation
 require 'classFire'
 class Player
+  attr_accessor :x, :y
   def initialize(window)
     @image = Gosu::Image.new(window, "../img/Ship.png", false)
     @x = @y = @vel_x = @vel_y = @angle = 0.0
@@ -39,5 +40,11 @@ class Player
   
   def draw
     @image.draw_rot(@x, @y, 1, @angle)
+  end
+  
+  def hitbox
+    xHitboxRange = ((@x - @image.width / 2).to_i..(@x + @image.width / 2).to_i)
+    yHitboxRange = ((@y - @image.width / 2).to_i..(@y + @image.width / 2).to_i)
+    {:x => xHitboxRange, :y => yHitboxRange}
   end
 end

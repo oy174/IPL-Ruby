@@ -10,3 +10,6 @@
 2015-02-06 16:52 - 18:00
 	Finished creating and getting Floating object moving.
 	
+2015-02-09 19:30 - 22:28
+	reworked the floating object class. Started on collision detection but ran into conversion errors. Also restarted ship being able to fire but currently does nothing.
+	

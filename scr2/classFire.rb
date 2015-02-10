@@ -1,12 +1,7 @@
 class Fire
-  def initialize(window)
-    @imageFire = Gosu::Image.new(window, "../img/Ship.png", false)
-    @x = @y = @vel_x = @vel_y = @angle = 0.0
-    @score = 0
-  end
-
-  def warp(x, y)
-    @x, @y = x, y
+  def initialize(window, ship)
+    @x = @y = ship.x, ship.y
+    @image = Gosu::Image(window, "../img/Bullet.png", false)
   end
 
   def accelerate
@@ -21,6 +16,12 @@ class Fire
   end
 
   def draw
-    @imageFire.draw_rot(@x, @y, 1, @angle)
+    @image.draw_rot(@x, @y, 1, @angle)
+  end
+  
+  def hitbox
+    hitboxX = ((@x - @image.width / 2).to_i..(@x + @image.width / 2).to_i)
+    hitboxX = ((@y - @image.width / 2).to_i..(@y + @image.width / 2).to_i)
+    {:x => hitboxX, :y => hitboxY}
   end
 end

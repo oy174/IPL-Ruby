@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'gosu'
-##require 'Math'
 require 'classPlayer.rb'
 require 'classFloatingObject.rb'
 
@@ -19,8 +18,10 @@ class GameWindow < Gosu::Window
     @player = Player.new(self)
     @player.warp(150, 240)
     
-    @floatingObjects = FloatingObject.new(self)
-    @floatingObjects.warp(1720, 500)
+    @floatingObjects = [FloatingObject.new(self)]
+    ##@floatingObjects.warp(1720, 500)
+    
+    @fires = []
   end
   
   def update
@@ -32,20 +33,43 @@ class GameWindow < Gosu::Window
     end
     if button_down? Gosu::KbDown then @player.accelerate_Down
     end
-    ## crashes game
-    if button_down? Gosu::KbZ then @floatingObjects.accelerate_Left
-    end
     
     @player.move
-    @floatingObjects.move
+    @floatingObjects.each {|floatingObject| floatingObject.move}
+    
+    @fires.each {|fire| fire.move}
+    
+    ##detectCollisions
   end
   
   def draw
     @background_image.draw(0, 0, ZOrder::Background)
     @player.draw
-    @floatingObjects.draw
+    @floatingObjects.each {|floatingObject| floatingObject.draw}
+    @fires.each {|fire| fire.draw}
   end
-  
+=begin  
+  def detectCollisions
+    @floatingObjects.each do |floatingObject|
+      if collision?(floatingObject, @player)
+        puts "There was a collision"
+      end
+    end
+  end
+
+  def collision?(object1, object2)
+    hitbox1, hitbox2 = object1.hitbox, object2.hitbox
+    xRange = hitbox1[:x] && hitbox2[:x]
+    yRange = hitbox1[:y] && hitbox2[:y]
+    xRange > 0 && yRange > 0
+  end
+=end
+  def button_down(id)
+    if id == Gosu::KbZ 
+      @fires << Fire.new(self, @player)
+    end
+  end
+        
   def button_down(id)
     if id == Gosu::KbEscape
       close

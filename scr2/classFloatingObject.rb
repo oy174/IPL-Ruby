@@ -5,7 +5,7 @@ end
 class FloatingObject
   def initialize(window)
     @image = Gosu::Image.new(window, "../img/floatingObject.png", false)
-    @x = @y = @angle = 0.0
+    @x, @y, @angle = rand(1720), rand(500), 0.0
     @score = 0
   end
   
@@ -22,5 +22,11 @@ class FloatingObject
   
   def draw
     @image.draw_rot(@x, @y, 1, @angle)
+  end
+  
+  def hitbox
+    xHitboxRange = ((@x - @image.width / 2).to_i..(@x + @image.width / 2).to_i)
+    yHitboxRange = ((@y - @image.width / 2).to_i..(@y + @image.width / 2).to_i)
+    {:x => xHitboxRange, :y => yHitboxRange}
   end
 end
