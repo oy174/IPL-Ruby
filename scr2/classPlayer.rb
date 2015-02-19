@@ -1,5 +1,4 @@
 ## Character creation
-require 'classFire'
 class Player
   attr_accessor :x, :y
   def initialize(window)
@@ -39,12 +38,13 @@ class Player
   end
   
   def draw
-    @image.draw_rot(@x, @y, 1, @angle)
+    @image.draw_rot(@x, @y, 1, @angle, 0.5, 0.5, 0.8, 0.8)
   end
   
   def hitbox
-    xHitboxRange = ((@x - @image.width / 2).to_i..(@x + @image.width / 2).to_i)
-    yHitboxRange = ((@y - @image.width / 2).to_i..(@y + @image.width / 2).to_i)
-    {:x => xHitboxRange, :y => yHitboxRange}
+    {
+     :x =>(@x - @image.width / 2)..(@x + @image.width / 2),
+     :y =>(@y - @image.height / 2)..(@y + @image.height / 2)
+    }
   end
 end

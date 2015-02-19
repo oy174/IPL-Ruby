@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'gosu'
 require 'classPlayer.rb'
+require 'classFire'
 require 'classFloatingObject.rb'
 
 =begin
@@ -21,7 +22,7 @@ class GameWindow < Gosu::Window
     @floatingObjects = [FloatingObject.new(self)]
     ##@floatingObjects.warp(1720, 500)
     
-    @fires = []
+    @fires = [Fire.new(self, @player)] ## should be blank array and be filled with this here*
   end
   
   def update
@@ -38,8 +39,9 @@ class GameWindow < Gosu::Window
     @floatingObjects.each {|floatingObject| floatingObject.move}
     
     @fires.each {|fire| fire.move}
+    @fires.reject! {|fire| fire.remove}
     
-    ##detectCollisions
+    detectCollisions
   end
   
   def draw
@@ -48,7 +50,7 @@ class GameWindow < Gosu::Window
     @floatingObjects.each {|floatingObject| floatingObject.draw}
     @fires.each {|fire| fire.draw}
   end
-=begin  
+   
   def detectCollisions
     @floatingObjects.each do |floatingObject|
       if collision?(floatingObject, @player)
@@ -59,14 +61,13 @@ class GameWindow < Gosu::Window
 
   def collision?(object1, object2)
     hitbox1, hitbox2 = object1.hitbox, object2.hitbox
-    xRange = hitbox1[:x] && hitbox2[:x]
-    yRange = hitbox1[:y] && hitbox2[:y]
-    xRange > 0 && yRange > 0
+    hitbox1[:x] === hitbox2[:x]
+    hitbox1[:y] === hitbox2[:y]
   end
-=end
+
   def button_down(id)
-    if id == Gosu::KbZ 
-      @fires << Fire.new(self, @player)
+    if id == Gosu::KbZ
+      @fires << Fire.new(self, @player) ## here*
     end
   end
         

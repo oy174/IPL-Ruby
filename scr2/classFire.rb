@@ -1,27 +1,29 @@
 class Fire
+    attr_accessor :currentRange, :maxRange
   def initialize(window, ship)
-    @x = @y = ship.x, ship.y
-    @image = Gosu::Image(window, "../img/Bullet.png", false)
+    @image = Gosu::Image.new(window, "../img/Ship.png", false)
+    @x, @y, @angle = ship.x, ship.y, 0.0
+    @currentRange, @maxRange = 0, 75
   end
-
-  def accelerate
-    @vel_x += 10
-  end
-
+  
   def move
-    @x += @vel_x
-    @x %= 640
-
-    @vel_x *= 0.95
+    @x += 20
+    @x %= 1920
+    @currentRange += 1
   end
-
+  
+  def remove
+    currentRange > maxRange
+  end
+  
   def draw
-    @image.draw_rot(@x, @y, 1, @angle)
+    @image.draw_rot(@x, @y, 1, @angle, 0.5, 0.5, 0.25, 0.25)
   end
   
   def hitbox
-    hitboxX = ((@x - @image.width / 2).to_i..(@x + @image.width / 2).to_i)
-    hitboxX = ((@y - @image.width / 2).to_i..(@y + @image.width / 2).to_i)
-    {:x => hitboxX, :y => hitboxY}
+    {
+     :x =>(@x - @image.width / 2)..(@x + @image.width / 2),
+     :y =>(@y - @image.height / 2)..(@y + @image.height / 2)
+    }
   end
 end

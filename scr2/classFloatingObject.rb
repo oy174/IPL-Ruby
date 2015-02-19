@@ -21,12 +21,13 @@ class FloatingObject
   end
   
   def draw
-    @image.draw_rot(@x, @y, 1, @angle)
+    @image.draw_rot(@x, @y, 1, @angle, 0.5, 0.5, 1.5, 1.5)
   end
   
   def hitbox
-    xHitboxRange = ((@x - @image.width / 2).to_i..(@x + @image.width / 2).to_i)
-    yHitboxRange = ((@y - @image.width / 2).to_i..(@y + @image.width / 2).to_i)
-    {:x => xHitboxRange, :y => yHitboxRange}
+    {
+     :x =>(@x - @image.width / 2)..(@x + @image.width / 2),
+     :y =>(@y - @image.height / 2)..(@y + @image.height / 2)
+    }
   end
 end
