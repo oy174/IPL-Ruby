@@ -40,11 +40,4 @@ class Player
   def draw
     @image.draw_rot(@x, @y, 1, @angle, 0.5, 0.5, 0.8, 0.8)
   end
-  
-  def hitbox
-    {
-     :x =>(@x - @image.width / 2)..(@x + @image.width / 2),
-     :y =>(@y - @image.height / 2)..(@y + @image.height / 2)
-    }
-  end
 end

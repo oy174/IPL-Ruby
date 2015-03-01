@@ -18,6 +18,8 @@
 	
 2015-03-01 15:00 - 15:06
 	Fixed the ship be able to fire repetitively.
-	
+
+2015-03-01 15:12 - 15:45
+		Set up Chipmunk
 
 	
