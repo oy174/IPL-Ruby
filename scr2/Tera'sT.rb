@@ -20,9 +20,8 @@ class GameWindow < Gosu::Window
     @player.warp(150, 240)
     
     @floatingObjects = [FloatingObject.new(self)]
-    ##@floatingObjects.warp(1720, 500)
     
-    @fires = [Fire.new(self, @player)] ## should be blank array and be filled with this here*
+    @fires = [] 
   end
   
   def update
@@ -40,8 +39,7 @@ class GameWindow < Gosu::Window
     
     @fires.each {|fire| fire.move}
     @fires.reject! {|fire| fire.remove}
-    
-    detectCollisions
+   
   end
   
   def draw
@@ -50,30 +48,13 @@ class GameWindow < Gosu::Window
     @floatingObjects.each {|floatingObject| floatingObject.draw}
     @fires.each {|fire| fire.draw}
   end
-   
-  def detectCollisions
-    @floatingObjects.each do |floatingObject|
-      if collision?(floatingObject, @player)
-        puts "There was a collision"
-      end
-    end
-  end
-
-  def collision?(object1, object2)
-    hitbox1, hitbox2 = object1.hitbox, object2.hitbox
-    hitbox1[:x] === hitbox2[:x]
-    hitbox1[:y] === hitbox2[:y]
-  end
-
-  def button_down(id)
-    if id == Gosu::KbZ
-      @fires << Fire.new(self, @player) ## here*
-    end
-  end
         
   def button_down(id)
     if id == Gosu::KbEscape
       close
+    end
+    if id == Gosu::KbZ
+      @fires << Fire.new(self, @player)
     end
   end
 end
