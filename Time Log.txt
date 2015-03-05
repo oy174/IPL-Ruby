@@ -20,6 +20,8 @@
 	Fixed the ship be able to fire repetitively.
 
 2015-03-01 15:12 - 15:45
-		Set up Chipmunk
+	Set up Chipmunk
 
+2015-03-05 10:30 - 12:10
+	Worked on getting OCRA set up but unable to get it to create Windows executable
 	
